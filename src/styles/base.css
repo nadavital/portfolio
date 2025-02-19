@@ -3,8 +3,12 @@
   --anim--hover-time: 400ms;
   --anim--hover-ease: cubic-bezier(0.25, 1, 0.5, 1);
   --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-bg-rgb: 255, 255, 255;
   --glass-border: rgba(255, 255, 255, 0.2);
   --glass-shadow: rgba(0, 0, 0, 0.1);
+  --nav-text: rgba(0, 0, 0, 0.8);
+  --nav-hover: rgba(0, 0, 0, 0.05);
+  --nav-active: rgba(0, 0, 0, 0.1);
 }
 
 @property --angle-1 {
@@ -17,6 +21,15 @@
   syntax: "<angle>";
   inherits: false;
   initial-value: -45deg;
+}
+
+[data-theme="dark"] {
+  --glass-bg: rgba(0, 0, 0, 0.2);
+  --glass-bg-rgb: 0, 0, 0;
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --nav-text: rgba(255, 255, 255, 0.9);
+  --nav-hover: rgba(255, 255, 255, 0.1);
+  --nav-active: rgba(255, 255, 255, 0.15);
 }
 
 html {
