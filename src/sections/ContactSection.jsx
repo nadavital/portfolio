@@ -16,6 +16,25 @@ const ContactSection = () => {
   });
   const [sending, setSending] = useState(false);
   const [status, setStatus] = useState('');
+  const [emailError, setEmailError] = useState('');
+
+  const validateEmail = (email) => {
+    // Common TLDs
+    const validTLDs = [
+      'com', 'net', 'org', 'edu', 'gov', 'mil', 'int',
+      'io', 'co', 'ai', 'app', 'dev', 'me', 'info',
+      // Country codes
+      'uk', 'us', 'ca', 'au', 'de', 'fr', 'jp', 'cn', 'br', 'il'
+    ];
+
+    // Basic format check
+    const basicEmailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z]+)+$/;
+    if (!basicEmailRegex.test(email)) return false;
+
+    // Check if TLD is valid
+    const tld = email.split('.').pop().toLowerCase();
+    return validTLDs.includes(tld);
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,12 +42,25 @@ const ContactSection = () => {
       ...prevState,
       [name]: value
     }));
+    
+    // Clear email error when user starts typing
+    if (name === 'email') {
+      setEmailError('');
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validate email before sending
+    if (!validateEmail(formData.email)) {
+      setEmailError('Please enter a valid email');
+      return;
+    }
+
     setSending(true);
     setStatus('');
+    setEmailError('');
 
     try {
       await emailjs.send(
@@ -79,6 +111,7 @@ const ContactSection = () => {
             required
             disabled={sending}
           />
+          {emailError && <div className="status-error">{emailError}</div>}
         </div>
         <div className="form-group">
           <textarea
