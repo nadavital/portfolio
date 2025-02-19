@@ -24,9 +24,24 @@
   /* Animation variables */
   --anim--hover-time: 400ms;
   --anim--hover-ease: cubic-bezier(0.25, 1, 0.5, 1);
+
+  /* Button specific colors - light theme */
+  --button-text: rgba(50, 50, 50, 1);
+  --button-bg: linear-gradient(-75deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+  --button-border: rgba(255, 255, 255, 0.5);
+  --button-shadow: rgba(0, 0, 0, 0.05);
+  --button-highlight: rgba(255, 255, 255, 0.5);
 }
 
- /* Base button styles */
+[data-theme="dark"] {
+  --button-text: rgba(255, 255, 255, 0.9);
+  --button-bg: linear-gradient(-75deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  --button-border: rgba(255, 255, 255, 0.2);
+  --button-shadow: rgba(0, 0, 0, 0.2);
+  --button-highlight: rgba(255, 255, 255, 0.2);
+}
+
+/* Base button styles */
 .button-wrap button span {
   /* Remove the default size here - let specific classes handle it */
   display: block;
@@ -35,7 +50,8 @@
   font-family: "Inter", sans-serif;
   letter-spacing: -0.05em;
   font-weight: 500;
-  color: rgba(50, 50, 50, 1);
+  color: var(--button-text);
+  text-shadow: 0em 0.25em 0.05em var(--button-shadow);
 }
 
 /* Make size differences more pronounced */
@@ -64,7 +80,12 @@
   border-radius: 999vw;
   background: transparent;
   pointer-events: none;
-  transition: all var(--anim--hover-time) var(--anim--hover-ease);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  width: fit-content;
+  margin: 0 auto;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transform: translate3d(0, 0, 0);
 }
 
 /* Button Shadow Container */
@@ -81,6 +102,7 @@
   -ms-filter: blur(clamp(2px, 0.125em, 12px));
   overflow: visible;
   pointer-events: none;
+  transform: translateZ(-1px);
 }
 
 /* Shadow */
@@ -113,23 +135,18 @@
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   pointer-events: auto;
   z-index: 3;
-  background: linear-gradient(
-    -75deg,
-    rgba(255, 255, 255, 0.05),
-    rgba(255, 255, 255, 0.2),
-    rgba(255, 255, 255, 0.05)
-  );
+  background: var(--button-bg);
   border-radius: 999vw;
-  box-shadow: inset 0 0.125em 0.125em rgba(0, 0, 0, 0.05),
-    inset 0 -0.125em 0.125em rgba(255, 255, 255, 0.5),
-    0 0.25em 0.125em -0.125em rgba(0, 0, 0, 0.2),
-    0 0 0.1em 0.25em inset rgba(255, 255, 255, 0.2),
+  box-shadow: inset 0 0.125em 0.125em var(--button-shadow),
+    inset 0 -0.125em 0.125em var(--button-highlight),
+    0 0.25em 0.125em -0.125em var(--button-shadow),
+    0 0 0.1em 0.25em inset var(--button-highlight),
     0 0 0 0 rgba(255, 255, 255, 1);
   backdrop-filter: blur(clamp(1px, 0.125em, 4px));
   -webkit-backdrop-filter: blur(clamp(1px, 0.125em, 4px));
   -moz-backdrop-filter: blur(clamp(1px, 0.125em, 4px));
   -ms-backdrop-filter: blur(clamp(1px, 0.125em, 4px));
-  transition: all var(--anim--hover-time) var(--anim--hover-ease);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .button-wrap button:hover {
@@ -138,10 +155,10 @@
   -webkit-backdrop-filter: blur(0.01em);
   -moz-backdrop-filter: blur(0.01em);
   -ms-backdrop-filter: blur(0.01em);
-  box-shadow: inset 0 0.125em 0.125em rgba(0, 0, 0, 0.05),
-    inset 0 -0.125em 0.125em rgba(255, 255, 255, 0.5),
-    0 0.15em 0.05em -0.1em rgba(0, 0, 0, 0.25),
-    0 0 0.05em 0.1em inset rgba(255, 255, 255, 0.5),
+  box-shadow: inset 0 0.125em 0.125em var(--button-shadow),
+    inset 0 -0.125em 0.125em var(--button-highlight),
+    0 0.15em 0.05em -0.1em var(--button-shadow),
+    0 0 0.05em 0.1em inset var(--button-highlight),
     0 0 0 0 rgba(255, 255, 255, 1);
 }
 
@@ -156,10 +173,10 @@
   font-family: "Inter", sans-serif;
   letter-spacing: -0.05em;
   font-weight: 500;
-  color: rgba(50, 50, 50, 1);
+  color: var(--button-text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-shadow: 0em 0.25em 0.05em rgba(0, 0, 0, 0.1);
+  text-shadow: 0em 0.25em 0.05em var(--button-shadow);
   transition: all var(--anim--hover-time) var(--anim--hover-ease);
   padding-inline: 1.5em;
   padding-block: 0.875em;
@@ -194,9 +211,9 @@
   background-size: 200% 200%;
   background-position: 0% 50%;
   background-repeat: no-repeat;
-  transition: background-position calc(var(--anim--hover-time) * 1.25)
-      var(--anim--hover-ease),
-    --angle-2 calc(var(--anim--hover-time) * 1.25) var(--anim--hover-ease);
+  transition: 
+    background-position 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    --angle-2 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .button-wrap button:hover span::after {
@@ -223,18 +240,19 @@
   box-sizing: border-box;
   background: conic-gradient(
       from var(--angle-1) at 50% 50%,
-      rgba(0, 0, 0, 0.5),
+      var(--button-shadow),
       rgba(0, 0, 0, 0) 5% 40%,
-      rgba(0, 0, 0, 0.5) 50%,
+      var(--button-shadow) 50%,
       rgba(0, 0, 0, 0) 60% 95%,
-      rgba(0, 0, 0, 0.5)
+      var(--button-shadow)
     ),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
+    linear-gradient(180deg, var(--button-highlight), var(--button-highlight));
   mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   mask-composite: exclude;
-  transition: all var(--anim--hover-time) var(--anim--hover-ease),
-    --angle-1 500ms ease;
-  box-shadow: inset 0 0 0 calc(var(--border-width) / 2) rgba(255, 255, 255, 0.5);
+  transition: 
+    all 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    --angle-1 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: inset 0 0 0 calc(var(--border-width) / 2) var(--button-highlight);
 }
 
 .button-wrap button:hover::after {
@@ -260,20 +278,23 @@
 
 /* Active State Effects */
 .button-wrap:has(button:active) {
-  transform: rotate3d(1, 0, 0, 25deg);
+  transform: rotate3d(1, 0, 0, 25deg) translate3d(0, 0, 0);
+  transform-origin: bottom;
 }
 
 .button-wrap:has(button:active) button {
-  box-shadow: inset 0 0.125em 0.125em rgba(0, 0, 0, 0.05),
-    inset 0 -0.125em 0.125em rgba(255, 255, 255, 0.5),
-    0 0.125em 0.125em -0.125em rgba(0, 0, 0, 0.2),
-    0 0 0.1em 0.25em inset rgba(255, 255, 255, 0.2),
+  transform: translate3d(0, 0, 1px);
+  box-shadow: inset 0 0.125em 0.125em var(--button-shadow),
+    inset 0 -0.125em 0.125em var(--button-highlight),
+    0 0.125em 0.125em -0.125em var(--button-shadow),
+    0 0 0.1em 0.25em inset var(--button-highlight),
     0 0.225em 0.05em 0 rgba(0, 0, 0, 0.05),
     0 0.25em 0 0 rgba(255, 255, 255, 0.75),
     inset 0 0.25em 0.05em 0 rgba(0, 0, 0, 0.15);
 }
 
 .button-wrap:has(button:active) .button-shadow {
+  transform: translateZ(-2px);
   filter: blur(clamp(2px, 0.125em, 12px));
   -webkit-filter: blur(clamp(2px, 0.125em, 12px));
   -moz-filter: blur(clamp(2px, 0.125em, 12px));

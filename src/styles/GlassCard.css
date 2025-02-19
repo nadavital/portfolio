@@ -1,60 +1,122 @@
 .glass-card {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--glass-bg);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--glass-border);
   border-radius: 20px;
   padding: 2rem;
   margin: 1rem 0;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 32px 0 var(--glass-shadow);
+  transition: 
+    transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    background 0.2s ease-out,
+    border-color 0.2s ease-out;
   height: 100%;
+}
+
+[data-theme="dark"] .glass-card {
+  background: var(--card-bg-dark);
+  border: none;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+  transition: 
+    transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    background 0.2s ease-out;
+}
+
+[data-theme="dark"] .glass-card:hover {
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .glass-card h2,
+[data-theme="dark"] .glass-card h3,
+[data-theme="dark"] .glass-card p,
+[data-theme="dark"] .glass-card .subtitle,
+[data-theme="dark"] .glass-card .duration {
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+[data-theme="dark"] .glass-card p,
+[data-theme="dark"] .glass-card .subtitle,
+[data-theme="dark"] .glass-card .duration {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .section-title {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .skill-tag {
+  background: var(--skill-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform 0.1s ease-out;
+  will-change: transform, background-color;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+[data-theme="dark"] .skill-tag:hover {
+  background: var(--skill-hover);
+  transform: translateY(-2px);
 }
 
 .glass-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.1);
+  box-shadow: 0 12px 40px 0 var(--glass-shadow);
 }
 
-.glass-card h2 {
-  color: #2c3e50;
+.glass-card h2, .glass-card h3, .glass-card p, .glass-card .subtitle, .glass-card .duration {
+  color: var(--text-primary);
   margin-bottom: 1.5rem;
   font-size: 1.5rem;
   font-weight: 600;
   letter-spacing: -0.05em;
+  transition: color 0.3s ease;
+}
+
+.glass-card h2 {
+  text-shadow: 0 1px 2px var(--glass-shadow);
 }
 
 .glass-card h3 {
-  color: #34495e;
   margin-bottom: 0.5rem;
   font-size: 1.2rem;
+  text-shadow: 0 1px 2px var(--glass-shadow);
 }
 
-.glass-card p {
-  color: rgba(50, 50, 50, 0.8);
+.glass-card p, .glass-card .subtitle, .glass-card .duration {
+  color: var(--text-secondary);
   line-height: 1.6;
   font-size: 0.95rem;
 }
 
+.glass-card p {
+  color: var(--text-secondary);
+}
+
 .glass-card .subtitle {
   font-size: 0.95rem;
-  color: rgba(50, 50, 50, 0.9);
   margin-bottom: 0.25rem;
 }
 
 .glass-card .duration {
   font-size: 0.9rem;
-  color: rgba(50, 50, 50, 0.7);
   margin-bottom: 0.75rem;
 }
 
 .glass-card .highlight {
   font-weight: 500;
-  color: #2c3e50;
+  color: var(--text-primary);
 }
 
 .glass-card .honors {
-  color: rgba(50, 50, 50, 0.9);
+  color: var(--text-secondary);
   margin-top: 0.5rem;
 }
 
@@ -69,7 +131,6 @@
   padding-left: 1.5rem;
   margin-bottom: 0.5rem;
   line-height: 1.4;
-  color: rgba(50, 50, 50, 0.8);
   font-size: 0.95rem;
 }
 
@@ -77,19 +138,41 @@
   content: "•";
   position: absolute;
   left: 0.5rem;
-  color: #3498db;
+  color: var(--text-primary);
 }
 
 .glass-link {
-  color: rgba(50, 50, 50, 0.8);
+  color: var(--text-secondary);
   text-decoration: none;
   transition: all 0.3s ease;
   border-bottom: 1px solid transparent;
 }
 
 .glass-link:hover {
-  color: rgba(50, 50, 50, 1);
-  border-bottom-color: rgba(50, 50, 50, 0.3);
+  color: var(--text-primary);
+  border-bottom-color: var(--text-secondary);
+}
+
+.skill-tag {
+  background: var(--skill-bg);
+  padding: 0.75rem 1.25rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform 0.1s ease-out;
+  will-change: transform, background-color;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
+.skill-tag:hover {
+  background: var(--skill-hover);
+  transform: translateY(-2px);
 }
 
 /* Responsive adjustments */

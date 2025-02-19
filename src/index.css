@@ -10,6 +10,37 @@
   --global--size: 16px;
   --anim--hover-time: 400ms;
   --anim--hover-ease: cubic-bezier(0.25, 1, 0.5, 1);
+  
+  /* Light theme variables */
+  --bg-primary: linear-gradient(135deg, #e3e3e3 0%, #d7d7d7 100%);
+  --text-primary: #333;
+  --text-secondary: #444;
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-shadow: rgba(31, 38, 135, 0.07);
+  --nav-text: #2c3e50;
+  --nav-active: rgba(255, 255, 255, 0.3);
+  --nav-hover: rgba(255, 255, 255, 0.2);
+  --skill-bg: rgba(255, 255, 255, 0.15);
+  --skill-hover: rgba(255, 255, 255, 0.25);
+  --title-shadow: rgba(0, 0, 0, 0.1);
+
+  /* Faster, smoother transitions */
+  transition: 
+    background 0s,
+    color 0s,
+    --bg-primary 0s,
+    --text-primary 0s,
+    --text-secondary 0s,
+    --glass-bg 0s,
+    --glass-border 0s,
+    --glass-shadow 0s,
+    --nav-text 0s,
+    --nav-active 0s,
+    --nav-hover 0s,
+    --skill-bg 0s,
+    --skill-hover 0s,
+    --title-shadow 0s;
 }
 
 * {
@@ -29,7 +60,7 @@ body {
   padding: 0;
   min-height: 100vh;
   width: 100%;
-  background: linear-gradient(135deg, #e3e3e3 0%, #d7d7d7 100%);
+  background: var(--bg-primary);
   background-attachment: fixed;
   font-family: "Inter", sans-serif;
   font-size: var(--global--size);
@@ -38,6 +69,8 @@ body {
   position: relative;
   overflow-y: visible;
   overflow-x: hidden;
+  color: var(--text-primary);
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 #root {
@@ -60,14 +93,14 @@ ul {
 }
 
 p {
-  color: #444;
+  color: var(--text-secondary);
   line-height: 1.6;
 }
 
 h1,
 h2,
 h3 {
-  color: #333;
+  color: var(--text-primary);
   letter-spacing: -0.05em;
 }
 
@@ -82,4 +115,37 @@ h3 {
   syntax: "<angle>";
   inherits: false;
   initial-value: -45deg;
+}
+
+[data-theme="dark"] {
+  --bg-primary: linear-gradient(135deg, #121212 0%, #1a1a1a 100%);
+  --text-primary: rgba(255, 255, 255, 1);
+  --text-secondary: rgba(255, 255, 255, 0.85);
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: rgba(0, 0, 0, 0.4);
+  --nav-text: #ffffff;
+  --nav-active: rgba(255, 255, 255, 0.15);
+  --nav-hover: rgba(255, 255, 255, 0.08);
+  --skill-bg: rgba(70, 70, 70, 0.95);
+  --skill-hover: rgba(85, 85, 85, 0.95);
+  --title-shadow: rgba(0, 0, 0, 0.4);
+  --card-bg-dark: rgba(45, 45, 45, 0.95);
+
+  /* Same faster transitions for dark theme */
+  transition: 
+    background 0s,
+    color 0s,
+    --bg-primary 0s,
+    --text-primary 0s,
+    --text-secondary 0s,
+    --glass-bg 0s,
+    --glass-border 0s,
+    --glass-shadow 0s,
+    --nav-text 0s,
+    --nav-active 0s,
+    --nav-hover 0s,
+    --skill-bg 0s,
+    --skill-hover 0s,
+    --title-shadow 0s;
 }
