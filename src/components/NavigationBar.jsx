@@ -80,10 +80,18 @@ const NavigationBar = ({ activeSection, onNavigate }) => {
               </button>
             ))}
           </div>
+        
+          <button 
+            className="theme-toggle" 
+            onClick={toggleTheme}
+            aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+          >
+            {isDarkMode ? <HiSun size={24} /> : <HiMoon size={24} />}
+          </button>
         </div>
       </nav>
       <button 
-        className="theme-toggle" 
+        className="theme-toggle-mobile" 
         onClick={toggleTheme}
         aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
       >

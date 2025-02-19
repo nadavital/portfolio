@@ -97,18 +97,23 @@
 }
 
 .theme-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.4rem;
+  all: unset;
+  cursor: pointer;
+  padding: 0.4rem 0.85rem;
   border-radius: 100px;
   margin-left: 0.15rem;
   margin-right: 0.15rem;
-  transition: transform 0.2s ease;
+  transition: all 0.2s ease;
+  color: var(--nav-text);
+  background: transparent;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .theme-toggle:hover {
-  transform: rotate(15deg);
+  background: var(--nav-hover);
 }
 
 .mobile-menu-toggle {
@@ -122,12 +127,17 @@
     left: 1rem;
     transform: none;
     padding: 0;
-    max-width: auto;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
   }
 
   .nav-content {
-    padding: 0 0.75rem;
+    padding: 0;
     position: relative;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
   }
 
   .nav-logo {
@@ -140,7 +150,7 @@
     left: 0;
     transform: none;
     flex-direction: column;
-    border-radius: 1rem;
+    border-radius: 16px;
     padding: 0.75rem;
     gap: 0.5rem;
     width: max-content;
@@ -212,6 +222,10 @@
   }
 
   .theme-toggle {
+    display: none;
+  }
+
+  .theme-toggle-mobile {
     position: fixed;
     bottom: 1rem;
     right: 1rem;
@@ -229,11 +243,17 @@
     box-shadow: 0 4px 15px var(--glass-shadow);
     z-index: 1000;
     color: var(--nav-text);
+    cursor: pointer;
     transition: all 0.2s ease;
   }
 
+  .theme-toggle-mobile:hover {
+    background: var(--nav-hover);
+    transform: none;
+  }
+
   .theme-toggle:hover {
-    transform: scale(1.05);
+    transform: none;
   }
 
   .mobile-menu-toggle {
@@ -244,13 +264,13 @@
     border: none;
     color: var(--nav-text);
     cursor: pointer;
-    padding: 0.4rem;
-    border-radius: 100px;
+    padding: 0;
+    width: 50px;
+    height: 50px;
     transition: all 0.2s ease;
   }
 
   .mobile-menu-toggle:hover {
-    background: var(--nav-hover);
     transform: scale(1.05);
   }
 
@@ -259,6 +279,6 @@
   }
 
   .menu-open .mobile-menu-toggle {
-    background: var(--nav-active);
+    background: transparent;
   }
 }
