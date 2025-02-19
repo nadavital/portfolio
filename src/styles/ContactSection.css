@@ -1,0 +1,9 @@
+/* Contact Section Layout */
+.contact-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 2rem;
+}
