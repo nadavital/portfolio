@@ -7,6 +7,7 @@ import { HiMenuAlt3, HiX } from 'react-icons/hi';
 const NavigationBar = ({ activeSection, onNavigate }) => {
   const { isDarkMode, toggleTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const menuRef = useRef(null);
   
   const sections = [
@@ -40,6 +41,15 @@ const NavigationBar = ({ activeSection, onNavigate }) => {
       document.removeEventListener('keydown', handleEscape);
     };
   }, [isMenuOpen]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handleNavClick = (id) => {
     onNavigate(id);
@@ -81,22 +91,26 @@ const NavigationBar = ({ activeSection, onNavigate }) => {
             ))}
           </div>
         
-          <button 
-            className="theme-toggle" 
-            onClick={toggleTheme}
-            aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
-          >
-            {isDarkMode ? <HiSun size={24} /> : <HiMoon size={24} />}
-          </button>
+          {!isMobile && (
+            <button 
+              className="theme-toggle" 
+              onClick={toggleTheme}
+              aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+            >
+              {isDarkMode ? <HiSun size={24} /> : <HiMoon size={24} />}
+            </button>
+          )}
         </div>
       </nav>
-      <button 
-        className="theme-toggle-mobile" 
-        onClick={toggleTheme}
-        aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
-      >
-        {isDarkMode ? <HiSun size={24} /> : <HiMoon size={24} />}
-      </button>
+      {isMobile && (
+        <button 
+          className="theme-toggle mobile-only" 
+          onClick={toggleTheme}
+          aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
+        >
+          {isDarkMode ? <HiSun size={24} /> : <HiMoon size={24} />}
+        </button>
+      )}
     </>
   );
 };
