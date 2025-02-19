@@ -6,7 +6,7 @@ import GlassButton from '../components/GlassButton';
 
 const ContactSection = () => {
   useEffect(() => {
-    emailjs.init('itHDqZmh0meyKQDnJ');
+    emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
   }, []);
 
   const [formData, setFormData] = useState({
@@ -64,8 +64,8 @@ const ContactSection = () => {
 
     try {
       await emailjs.send(
-        'service_rflja7f',
-        'template_2j8ex88',
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         {
           from_name: formData.name,
           from_email: formData.email,
