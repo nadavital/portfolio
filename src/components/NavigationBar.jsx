@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom'; // Import useNavigate
 import '../styles/NavigationBar.css';
 import { useTheme } from '../contexts/ThemeContext';
 import { HiSun, HiMoon } from 'react-icons/hi';
@@ -9,13 +10,15 @@ const NavigationBar = ({ activeSection, onNavigate }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const menuRef = useRef(null);
-  
+  const location = useLocation(); // Get current location
+  const navigate = useNavigate(); // Get navigate function
+
   const sections = [
-    { id: 'home', label: 'Home' },
-    { id: 'experience', label: 'Experience' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'skills', label: 'Skills' },
-    { id: 'contact', label: 'Contact' }
+    { id: 'home', label: 'Home', path: '/' },
+    { id: 'experience', label: 'Experience', path: '/' },
+    { id: 'projects', label: 'Projects', path: '/' },
+    { id: 'skills', label: 'Skills', path: '/' },
+    { id: 'contact', label: 'Contact', path: '/' }
   ];
 
   useEffect(() => {
@@ -51,20 +54,36 @@ const NavigationBar = ({ activeSection, onNavigate }) => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const handleNavClick = (id) => {
-    onNavigate(id);
-    setIsMenuOpen(false);
+
+  const handleNavClick = (id, path, event) => {
+    // Prevent default if it's potentially a same-page scroll handled by button/logic
+    if (path === '/' && location.pathname === '/') {
+       event?.preventDefault(); // Prevent default for button clicks triggering scroll
+    }
+
+    if (path === '/' && location.pathname === '/') {
+      // If on the main page and clicking a main section, scroll
+      onNavigate(id);
+    } else if (path === '/' && location.pathname !== '/') {
+      // If on a different page and clicking a main section link (like Home), navigate to '/'
+      navigate('/');
+    } else if (path !== '/') {
+      // If it's a link to a different page (e.g., /playcount), Link component handles it.
+      // We might still want to close the menu if needed, handled below.
+    }
+    setIsMenuOpen(false); // Close menu after any navigation action
   };
+
 
   return (
     <>
-      <nav 
+      <nav
         className={`navigation-bar ${isMenuOpen ? 'menu-open' : ''}`}
         ref={menuRef}
         role="navigation"
       >
-        <div className="nav-content">        
-          <button 
+        <div className="nav-content">
+          <button
             className="mobile-menu-toggle"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle navigation menu"
@@ -73,44 +92,54 @@ const NavigationBar = ({ activeSection, onNavigate }) => {
             {isMenuOpen ? <HiX size={24} /> : <HiMenuAlt3 size={24} />}
           </button>
 
-          <div 
+          <div
             className="nav-links"
             role="menu"
             aria-hidden={!isMenuOpen}
           >
-            {sections.map(({ id, label }) => (
-              <button
-                key={id}
-                className={`nav-link ${activeSection === id ? 'active' : ''}`}
-                onClick={() => handleNavClick(id)}
-                role="menuitem"
-                aria-current={activeSection === id ? 'page' : undefined}
-              >
-                <span>{label}</span>
-              </button>
-            ))}
-          </div>
-        
-          {!isMobile && (
-            <button 
-              className="theme-toggle" 
-              onClick={toggleTheme}
-              aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
-            >
-              {isDarkMode ? <HiSun size={24} /> : <HiMoon size={24} />}
+            {sections.map(({ id, label, path }) => {
+              const isCurrentPageSection = path === '/' && location.pathname === '/' && activeSection === id;
+              const isCurrentPageLink = path !== '/' && location.pathname === path;
+              const isActive = isCurrentPageSection || isCurrentPageLink;
+
+              // Always render a button for main sections, handle navigation logic in onClick
+              if (path === '/') {
+                return (
+                  <button
+                    key={id}
+                    role="menuitem"
+                    className={`nav-link ${isActive ? 'active' : ''}`}
+                    onClick={(e) => handleNavClick(id, path, e)} // Pass event
+                    aria-current={isActive ? 'page' : undefined}
+                  >
+                    {label}
+                  </button>
+                );
+              } else {
+                // Render Link for distinct pages like /playcount
+                return (
+                  <Link
+                    key={id}
+                    role="menuitem"
+                    to={path}
+                    className={`nav-link ${isActive ? 'active' : ''}`}
+                    onClick={() => handleNavClick(id, path)} // Close menu on link click
+                    aria-current={isActive ? 'page' : undefined}
+                  >
+                    {label}
+                  </Link>
+                );
+              }
+            })}
+            {/* Theme toggle button */}
+            <button onClick={toggleTheme} className="theme-toggle" aria-label="Toggle theme">
+              {isDarkMode ? <HiSun size={20} /> : <HiMoon size={20} />}
             </button>
-          )}
+          </div>
         </div>
       </nav>
-      {isMobile && (
-        <button 
-          className="theme-toggle mobile-only" 
-          onClick={toggleTheme}
-          aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
-        >
-          {isDarkMode ? <HiSun size={24} /> : <HiMoon size={24} />}
-        </button>
-      )}
+      {/* Mobile menu overlay */}
+      {isMobile && isMenuOpen && <div className="mobile-menu-overlay" onClick={() => setIsMenuOpen(false)}></div>}
     </>
   );
 };
