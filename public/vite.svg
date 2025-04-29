@@ -1,39 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
-  <!-- Define the glow effect for the circle -->
-  <defs>
-    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-    <!-- Define the glassmorphic effect for the text -->
-    <filter id="glass" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="1" result="blur"/>
-      <feComponentTransfer>
-        <feFuncA type="linear" slope="0.6"/> <!-- Slightly higher transparency -->
-      </feComponentTransfer>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-    <!-- Define a subtle shadow for the text -->
-    <filter id="text-shadow" x="-50%" y="-50%" width="200%" height="200%">
-      <feDropShadow dx="1" dy="1" stdDeviation="0.5" flood-color="#FFFFFF" flood-opacity="0.2"/>
-    </filter>
-  </defs>
-
-  <!-- Background -->
-  <rect width="200" height="200" fill="#2C2F33"/>
-
-  <!-- Circle with glow -->
-  <g transform="translate(100, 100)">
-    <circle r="50" fill="#66B0FF" filter="url(#glow)"/>
-  </g>
-
-  <!-- "NA" Text with adjusted glassmorphic effect -->
-  <text x="100" y="105" font-family="Arial, sans-serif" font-size="50" font-weight="bold" fill="rgba(255, 255, 255, 0.4)" 
-        text-anchor="middle" alignment-baseline="middle" filter="url(#glass) url(#text-shadow)">NA</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
+        font-family="Arial, Helvetica, sans-serif" font-size="48" fill="#007bff">
+    &lt;N/&gt;
+  </text>
 </svg>
