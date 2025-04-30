@@ -94,6 +94,46 @@
   scrollbar-width: none;  /* Firefox */
 }
 
+/* Projects section: headers with an icon use grid */
+.projects-section .project-card-header.has-icon {
+  display: grid;
+  grid-template-columns: 48px auto;
+  grid-template-rows: auto auto;
+  column-gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+/* Projects section: headers without an icon stack title and duration vertically */
+.projects-section .project-card-header:not(.has-icon) {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+  padding-left: calc(48px + 0.75rem); /* align with icon-based headers */
+}
+
+.projects-section .project-card-header .project-icon {
+  grid-row: 1 / span 2;
+  width: 48px;
+  height: 48px; /* fixed height for square shape */
+  border-radius: 25%; /* squircle shape */
+  object-fit: cover;
+}
+
+/* Grid-specific title and date placement when an icon is present */
+.projects-section .project-card-header.has-icon h3 {
+  grid-row: 1;
+  grid-column: 2;
+  margin: 0;
+  align-self: end;
+}
+
+.projects-section .project-card-header.has-icon .duration {
+  grid-row: 2;
+  grid-column: 2;
+  align-self: start;
+}
+
 /* Add horizontal scroll for experience cards */
 .experience-section .sections-grid {
   display: flex;

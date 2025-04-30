@@ -9,6 +9,7 @@ import ProjectsSection from './sections/ProjectsSection';
 import SkillsSection from './sections/SkillsSection';
 import ContactSection from './sections/ContactSection';
 import PlayCountPage from './pages/PlayCountPage'; // Import the new page
+import PlayCountPrivacyPolicyPage from './pages/PlayCountPrivacyPolicyPage'; // Import PlayCount-specific privacy policy
 
 // Component to render the main sections for the home page
 function MainPageContent({ setActiveSection }) {
@@ -92,7 +93,7 @@ function App() {
           <Routes> {/* Define routes */}
             <Route path="/" element={<MainPageContent setActiveSection={setActiveSection} />} />
             <Route path="/playcount" element={<PlayCountPage />} />
-            {/* Add other routes here if needed */}
+            <Route path="/playcount/privacy-policy" element={<PlayCountPrivacyPolicyPage />} />
           </Routes>
         </div>
       </div>
