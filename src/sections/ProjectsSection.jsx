@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // Import Link
+import Link from 'next/link';
 import resumeData from '../../Nadav_Avital_Resume.json';
 import GlassCard from '../components/GlassCard';
 import appStoreBadge from '../assets/Download-on-the-App-Store/US/Download_on_App_Store/Black_lockup/SVG/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg';
@@ -59,7 +59,7 @@ const ProjectsSection = () => (
           </div>
           {/* Conditionally render the PlayCount link */}
           {project.link && (
-            <Link to={project.link} className="clean-button" style={{ textDecoration: 'none' }}>
+            <Link href={project.link} className="clean-button" style={{ textDecoration: 'none' }}>
               {project.linkText}
             </Link>
           )}

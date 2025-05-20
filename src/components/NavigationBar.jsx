@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom'; // Import useNavigate
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import '../styles/NavigationBar.css';
 import { useTheme } from '../contexts/ThemeContext';
 import { HiSun, HiMoon } from 'react-icons/hi';
@@ -8,10 +9,9 @@ import { HiMenuAlt3, HiX } from 'react-icons/hi';
 const NavigationBar = ({ activeSection, onNavigate }) => {
   const { isDarkMode, toggleTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [isMobile, setIsMobile] = useState(false);
   const menuRef = useRef(null);
-  const location = useLocation(); // Get current location
-  const navigate = useNavigate(); // Get navigate function
+  const router = useRouter();
 
   const sections = [
     { id: 'home', label: 'Home', path: '/' },
@@ -50,6 +50,7 @@ const NavigationBar = ({ activeSection, onNavigate }) => {
       setIsMobile(window.innerWidth < 768);
     };
 
+    handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -57,16 +58,15 @@ const NavigationBar = ({ activeSection, onNavigate }) => {
 
   const handleNavClick = (id, path, event) => {
     // Prevent default if it's potentially a same-page scroll handled by button/logic
-    if (path === '/' && location.pathname === '/') {
+    if (path === '/' && router.pathname === '/') {
        event?.preventDefault(); // Prevent default for button clicks triggering scroll
     }
 
-    if (path === '/' && location.pathname === '/') {
+    if (path === '/' && router.pathname === '/') {
       // If on the main page and clicking a main section, scroll
       onNavigate(id);
-    } else if (path === '/' && location.pathname !== '/') {
-      // If on a different page and clicking a main section link (like Home), navigate to '/'
-      navigate('/');
+    } else if (path === '/' && router.pathname !== '/') {
+      router.push('/');
     } else if (path !== '/') {
       // If it's a link to a different page (e.g., /playcount), Link component handles it.
       // We might still want to close the menu if needed, handled below.
@@ -98,8 +98,8 @@ const NavigationBar = ({ activeSection, onNavigate }) => {
             aria-hidden={!isMenuOpen}
           >
             {sections.map(({ id, label, path }) => {
-              const isCurrentPageSection = path === '/' && location.pathname === '/' && activeSection === id;
-              const isCurrentPageLink = path !== '/' && location.pathname === path;
+              const isCurrentPageSection = path === '/' && router.pathname === '/' && activeSection === id;
+              const isCurrentPageLink = path !== '/' && router.pathname === path;
               const isActive = isCurrentPageSection || isCurrentPageLink;
 
               // Always render a button for main sections, handle navigation logic in onClick
@@ -121,7 +121,7 @@ const NavigationBar = ({ activeSection, onNavigate }) => {
                   <Link
                     key={id}
                     role="menuitem"
-                    to={path}
+                    href={path}
                     className={`nav-link ${isActive ? 'active' : ''}`}
                     onClick={() => handleNavClick(id, path)} // Close menu on link click
                     aria-current={isActive ? 'page' : undefined}
