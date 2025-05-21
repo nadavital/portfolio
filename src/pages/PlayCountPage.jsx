@@ -7,7 +7,6 @@ import screenshotSongs from '../assets/playcount/playCountTopSongs.jpeg';
 import screenshotAlbums from '../assets/playcount/playCountTopAlbums.jpeg';
 import screenshotArtists from '../assets/playcount/playCountArtist.jpeg';
 import screenshotAlbum from '../assets/playcount/playCountAlbum.jpeg';
-import '../styles/PlayCountPage.css';
 
 function PlayCountPage() {
   return (

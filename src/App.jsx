@@ -75,12 +75,6 @@ function App() {
         });
         setActiveSection(sectionId);
       }
-    } else {
-      // If not on the main page, navigate there first, then scroll (might need adjustment)
-      // For simplicity now, just log or handle differently
-      console.log("Scrolling only available on the main page.");
-      // Or navigate home first: navigate('/', { state: { scrollTo: sectionId } });
-      // Then handle the scroll in a useEffect based on location.state
     }
   };
 

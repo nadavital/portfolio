@@ -1,9 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image'; // Import next/image
 import resumeData from '../../Nadav_Avital_Resume.json';
 import GlassCard from '../components/GlassCard';
-import appStoreBadge from '../assets/Download-on-the-App-Store/US/Download_on_App_Store/Black_lockup/SVG/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg';
-import playcountIcon from '../assets/playcount/playcounticon.png';
 
 // Define the desired order based on recency
 const orderedProjects = [
@@ -33,7 +32,9 @@ const ProjectsSection = () => (
           <div className="glass-card-content">
             <div className={`project-card-header ${project.id === 'playcount' ? 'has-icon' : ''}`}>
               {project.id === 'playcount' && (
-                <img src={playcountIcon} alt="PlayCount Icon" className="project-icon" />
+                <div className="project-icon" style={{ position: 'relative', width: '50px', height: '50px' }}> {/* Adjust width/height as needed */}
+                  <Image src="/assets/playcount/playcounticon.png" alt="PlayCount Icon" fill style={{ objectFit: 'contain' }} />
+                </div>
               )}
               <h3>{project.name}</h3>
               <span className="duration">{project.duration}</span>
@@ -52,7 +53,14 @@ const ProjectsSection = () => (
               }
               {project.appLink &&
                 <a href={project.appLink} target="_blank" rel="noopener noreferrer">
-                  <img src={appStoreBadge} alt="Download on the App Store" className="app-store-badge" />
+                  <div className="app-store-badge" style={{ position: 'relative', width: '120px', height: '40px' }}> {/* Adjust width/height as needed */}
+                    <Image
+                      src="/assets/Download-on-the-App-Store/US/Download_on_App_Store/Black_lockup/SVG/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
+                      alt="Download on the App Store"
+                      fill
+                      style={{ objectFit: 'contain' }}
+                    />
+                  </div>
                 </a>
               }
             </div>

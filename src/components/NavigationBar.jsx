@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import '../styles/NavigationBar.css';
 import { useTheme } from '../contexts/ThemeContext';
 import { HiSun, HiMoon } from 'react-icons/hi';
 import { HiMenuAlt3, HiX } from 'react-icons/hi';

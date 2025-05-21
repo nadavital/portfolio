@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/PlayCountPage.css'; // reuse styling for layout and privacy section
 
 function PrivacyPolicyPage() {
   return (

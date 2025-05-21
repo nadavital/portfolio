@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import NavigationBar from '../src/components/NavigationBar';
 import HomeSection from '../src/sections/HomeSection';
@@ -9,22 +9,28 @@ import ContactSection from '../src/sections/ContactSection';
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState('home');
+  const activeSectionRef = useRef('home');
 
   useEffect(() => {
-    const observerCallback = entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && entry.intersectionRatio > 0.2) {
-          setActiveSection(entry.target.id);
-        }
-      });
-    };
+    activeSectionRef.current = activeSection;
+  }, [activeSection]);
 
-    const observer = new IntersectionObserver(observerCallback, {
-      threshold: [0.2, 0.5],
-      rootMargin: '-80px 0px -20% 0px'
-    });
-
+  useEffect(() => {
     const sections = document.querySelectorAll('.section:not(.playcount-page)');
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            if (activeSectionRef.current !== id) {
+              setActiveSection(id);
+              activeSectionRef.current = id;
+            }
+          }
+        });
+      },
+      { rootMargin: '-50% 0px -50% 0px', threshold: 0 }
+    );
     sections.forEach(section => observer.observe(section));
     return () => observer.disconnect();
   }, []);

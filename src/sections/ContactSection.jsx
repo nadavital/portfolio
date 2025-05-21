@@ -1,13 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 import resumeData from '../../Nadav_Avital_Resume.json';
-import '../styles/ContactSection.css';
 import GlassButton from '../components/GlassButton';
+import GlassCard from '../components/GlassCard'; // Import GlassCard
+import styles from '../styles/ContactSection.module.css';
 
 const ContactSection = () => {
+  const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+  const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+  const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+
   useEffect(() => {
-    emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
-  }, []);
+    if (publicKey) {
+      emailjs.init(publicKey);
+    } else {
+      console.error('EmailJS Public Key is not defined. Make sure NEXT_PUBLIC_EMAILJS_PUBLIC_KEY is set in your .env.local file.');
+    }
+  }, [publicKey]);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -62,10 +71,17 @@ const ContactSection = () => {
     setStatus('');
     setEmailError('');
 
+    if (!serviceId || !templateId) {
+      console.error('EmailJS Service ID or Template ID is not defined. Make sure NEXT_PUBLIC_EMAILJS_SERVICE_ID and NEXT_PUBLIC_EMAILJS_TEMPLATE_ID are set in your .env.local file.');
+      setStatus('Error: EmailJS configuration is missing.');
+      setSending(false);
+      return;
+    }
+
     try {
       await emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        serviceId,
+        templateId,
         {
           from_name: formData.name,
           from_email: formData.email,
@@ -85,51 +101,53 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="section contact-section">
-      <h2 className="section-title">Get in Touch</h2>
-      <form onSubmit={handleSubmit} className="contact-form">
-        <div className="form-group">
-          <input
-            type="text"
-            id="name"
-            name="name"
-            placeholder="Your Name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-            disabled={sending}
-          />
-        </div>
-        <div className="form-group">
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Your Email Address"
-            value={formData.email}
-            onChange={handleChange}
-            required
-            disabled={sending}
-          />
-          {emailError && <div className="status-error">{emailError}</div>}
-        </div>
-        <div className="form-group">
-          <textarea
-            id="message"
-            name="message"
-            placeholder="Your Message"
-            value={formData.message}
-            onChange={handleChange}
-            required
-            rows="5"
-            disabled={sending}
-          />
-        </div>
-        {status && <div className={status.includes('success') ? 'status-success' : 'status-error'}>{status}</div>}
-        <GlassButton type="submit" size="medium" disabled={sending}>
-          {sending ? 'Sending...' : 'Send Message'}
-        </GlassButton>
-      </form>
+    <section id="contact" className={`section ${styles.section} ${styles['contact-section-wrapper']}`}>
+      <GlassCard className={styles['contact-glass-card']}> { /* Wrap content in GlassCard */ }
+        <h2 className={styles['section-title']}>Get in Touch</h2>
+        <form onSubmit={handleSubmit} className={styles['contact-form']}>
+          <div className={styles['form-group']}>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Your Name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              disabled={sending}
+            />
+          </div>
+          <div className={styles['form-group']}>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Your Email Address"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              disabled={sending}
+            />
+            {emailError && <div className={styles['status-error']}>{emailError}</div>}
+          </div>
+          <div className={styles['form-group']}>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Your Message"
+              value={formData.message}
+              onChange={handleChange}
+              required
+              rows="5"
+              disabled={sending}
+            />
+          </div>
+          {status && <div className={status.includes('success') ? styles['status-success'] : styles['status-error']}>{status}</div>}
+          <GlassButton type="submit" size="medium" disabled={sending}>
+            {sending ? 'Sending...' : 'Send Message'}
+          </GlassButton>
+        </form>
+      </GlassCard>
     </section>
   );
 };
