@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { FaGithub } from 'react-icons/fa';
-import '../src/styles/PlayCountPage.css';
 
 export default function PlayCountPage() {
   return (
