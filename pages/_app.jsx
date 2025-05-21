@@ -6,7 +6,7 @@ import '../src/styles/PlayCountPage.css';
 import '../src/styles/NavigationBar.css';
 import { ThemeProvider } from '../src/contexts/ThemeContext';
 import { DefaultSeo } from 'next-seo';
-import SEO from '../next-seo.config';
+import SEO from '../next-seo.config.js';
 
 export default function MyApp({ Component, pageProps }) {
   return (
