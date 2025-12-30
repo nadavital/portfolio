@@ -1,0 +1,103 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+
+%---------- Margins ----------
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-0.7in}
+\addtolength{\textheight}{1.4in}
+
+%---------- Header ----------
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+%---------- Sections ----------
+\titleformat{\section}{\large\bfseries}{}{0em}{}[\titlerule]
+
+% Disable paragraph indentation so role lines aren't indented
+\setlength{\parindent}{0pt}
+
+% Give bullets a small indent so they nest under role titles nicely
+\setlist[itemize]{noitemsep,nolistsep,leftmargin=1.5em}
+
+%---------- Document ----------
+\begin{document}
+
+\begin{center}
+    {\LARGE \textbf{Nadav Avital}} \\[4pt]
+    \href{mailto:nadav.avital@icloud.com}{nadav.avital@icloud.com} \ $|$ \
+    (650) 285-7786 \ $|$ \
+    \href{https://linkedin.com/in/nadavital}{linkedin.com/in/nadavital} \ $|$ \
+    \href{https://nadavavital.com}{nadavavital.com}
+\end{center}
+
+%---------- EXPERIENCE ----------
+\section*{Professional Experience}
+
+\textbf{eBay, San Jose}
+
+\textit{Software Engineer – Global Technology, Buyer Experience} \hfill \textit{Feb 2025 -- Present}
+\begin{itemize}
+    \item Designed and implemented a backend \textbf{Java proxy server} for internal tools, with APIs that have been adopted by multiple checkout apps in production, providing services for secret management, SSO integration, role-based authentication, and Elasticsearch data access and index management.
+    \item Built \textbf{FeedbackLens}, a generative AI–powered sentiment analysis dashboard in React, showing PMs and engineers a top down view of thousands of customer feedback entries, top concern summaries, and insights.
+    \item Supported development on the \textbf{eBay iOS app}, collaborating with mobile engineers to deliver a seamless buyer experience, add new features, fix long in production bugs, and adapting to new OS releases.
+    \item Contributed and added new features to \textbf{checkout and shopping cart experience services}, powering high-scale purchasing workflows across eBay and connecting our frontend and backend teams.
+    \item Selected for eBay’s \textbf{AI Innovation Team}, helping drive adoption of AI-assisted software engineering practices across the company.
+\end{itemize}
+
+\textit{Software Engineering Intern – Core Technology, Payments} \hfill \textit{Jun -- Sep 2024}
+\begin{itemize}
+    \item Designed and implemented a \textbf{sentiment-analysis pipeline} in Python using APIs for generative AI integration, PII anonymization, and elastic search indexing.
+    \item Created a Grafana dashboard displaying top insights and trends from the sentiment analysis pipeline that streamlined the checkout team’s ability to respond to customer feedback.
+\end{itemize}
+
+\textbf{Anodot, Ra’anana}
+
+\textit{Software Engineering Intern} \hfill \textit{Jun -- Sep 2023}
+\begin{itemize}
+    \item Built a full-stack application to process Google Cloud usage data and generate optimization recommendations, enabling customer success managers to cut cloud costs for enterprise clients.
+    \item Technologies: Python, JavaScript, SQL (MySQL/Redshift/BigQuery), Google Cloud APIs.
+\end{itemize}
+
+%---------- EDUCATION ----------
+\section*{Education}
+\textbf{University of California, Santa Barbara} \hfill \textit{Dec 2024} \\
+B.S. Computer Science, GPA: \textbf{3.98}, Highest Honors, Dean's list 2021-2024
+
+%---------- PROJECTS ----------
+\section*{Projects}
+
+\textbf{PlayCount} \hfill \textit{2024 -- Present}
+\begin{itemize}
+    \item Published iOS app that provides \textbf{Apple Music listening analytics}, including top songs, albums, and artists ranked by either play count or time listened.
+    \item Enables users to explore detailed breakdowns such as top songs and albums by artist, and top songs within a specific album.
+    \item Built in Swift/SwiftUI with MusicKit, MediaPlayer, and CloudKit, optimized for iOS 26 and styled to emulate the native Apple Music app.
+    \item Integrated \textbf{App Intents} and \textbf{Shortcuts}, allowing Siri and system-level access (e.g., instantly retrieving the play count of the currently playing track).
+\end{itemize}
+
+\textbf{Split} \hfill \textit{Sep -- Dec 2024}
+\begin{itemize}
+    \item Cross-platform React Native app for splitting bills; integrated Venmo payments, image recognition, and receipt parsing APIs.
+    \item Added in-app social layer with user profiles and friend requests, driving engagement beyond utility.
+\end{itemize}
+
+\textbf{Sous Chef} \hfill \textit{Mar -- Jun 2024}
+\begin{itemize}
+    \item VR cooking simulator in Unity/C\# with AI-driven guidance, teaching users real-world steak-cooking skills through immersive gameplay.
+\end{itemize}
+
+%---------- SKILLS ----------
+\section*{Skills}
+\textbf{Programming:} Swift, SwiftUI, Python, Java, JavaScript, C++, C\#, HTML/CSS, SQL, NoSQL \\
+\textbf{Frameworks \& Tools:} MusicKit, CloudKit, React, Unity, Grafana, OpenAI APIs, GitHub, Figma \\
+\textbf{Languages:} Fluent in English and Hebrew
+
+\end{document}
