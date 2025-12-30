@@ -1,0 +1,107 @@
+{
+    "name": "Nadav Avital",
+    "role": "Software Engineer",
+    "contact": {
+        "email": "nadav.avital@icloud.com",
+        "phone": "(650) 285-7786",
+        "linkedin": "https://linkedin.com/in/nadavital",
+        "website": "https://nadavavital.com",
+        "github": "https://github.com/nadavital"
+    },
+    "education": {
+        "university": "University of California, Santa Barbara",
+        "degree": "B.S. Computer Science",
+        "graduation": "Dec 2024",
+        "gpa": "3.98",
+        "honors": "Highest Honors, Dean's list 2021-2024"
+    },
+    "experience": [
+        {
+            "company": "eBay",
+            "location": "San Jose",
+            "role": "Software Engineer – Global Technology, Buyer Experience",
+            "duration": "Feb 2025 – Present",
+            "points": [
+                "Designed and implemented a backend Java proxy server for internal tools, with APIs that have been adopted by multiple checkout apps in production, providing services for secret management, SSO integration, role-based authentication, and Elasticsearch data access and index management.",
+                "Built FeedbackLens, a generative AI–powered sentiment analysis dashboard in React, showing PMs and engineers a top down view of thousands of customer feedback entries, top concern summaries, and insights.",
+                "Supported development on the eBay iOS app, collaborating with mobile engineers to deliver a seamless buyer experience, add new features, fix long in production bugs, and adapting to new OS releases.",
+                "Contributed and added new features to checkout and shopping cart experience services, powering high-scale purchasing workflows across eBay and connecting our frontend and backend teams.",
+                "Selected for eBay's AI Innovation Team, helping drive adoption of AI-assisted software engineering practices across the company."
+            ]
+        },
+        {
+            "company": "eBay",
+            "location": "San Jose",
+            "role": "Software Engineering Intern – Core Technology, Payments",
+            "duration": "Jun – Sep 2024",
+            "points": [
+                "Designed and implemented a sentiment-analysis pipeline in Python using APIs for generative AI integration, PII anonymization, and elastic search indexing.",
+                "Created a Grafana dashboard displaying top insights and trends from the sentiment analysis pipeline that streamlined the checkout team's ability to respond to customer feedback."
+            ]
+        },
+        {
+            "company": "Anodot",
+            "location": "Ra'anana",
+            "role": "Software Engineering Intern",
+            "duration": "Jun – Sep 2023",
+            "points": [
+                "Built a full-stack application to process Google Cloud usage data and generate optimization recommendations, enabling customer success managers to cut cloud costs for enterprise clients.",
+                "Technologies: Python, JavaScript, SQL (MySQL/Redshift/BigQuery), Google Cloud APIs."
+            ]
+        }
+    ],
+    "projects": [
+        {
+            "name": "PlayCount",
+            "duration": "2024 – Present",
+            "points": [
+                "Published iOS app that provides Apple Music listening analytics, including top songs, albums, and artists ranked by either play count or time listened.",
+                "Enables users to explore detailed breakdowns such as top songs and albums by artist, and top songs within a specific album.",
+                "Built in Swift/SwiftUI with MusicKit, MediaPlayer, and CloudKit, optimized for iOS 26 and styled to emulate the native Apple Music app.",
+                "Integrated App Intents and Shortcuts, allowing Siri and system-level access (e.g., instantly retrieving the play count of the currently playing track)."
+            ]
+        },
+        {
+            "name": "Split",
+            "duration": "Sep – Dec 2024",
+            "points": [
+                "Cross-platform React Native app for splitting bills; integrated Venmo payments, image recognition, and receipt parsing APIs.",
+                "Added in-app social layer with user profiles and friend requests, driving engagement beyond utility."
+            ]
+        },
+        {
+            "name": "Sous Chef",
+            "duration": "Mar – Jun 2024",
+            "points": [
+                "VR cooking simulator in Unity/C# with AI-driven guidance, teaching users real-world steak-cooking skills through immersive gameplay."
+            ]
+        }
+    ],
+    "skills": {
+        "programming": [
+            "Swift",
+            "SwiftUI",
+            "Python",
+            "Java",
+            "JavaScript",
+            "C++",
+            "C#",
+            "HTML/CSS",
+            "SQL",
+            "NoSQL"
+        ],
+        "frameworks": [
+            "MusicKit",
+            "CloudKit",
+            "React",
+            "Unity",
+            "Grafana",
+            "OpenAI APIs",
+            "GitHub",
+            "Figma"
+        ],
+        "languages": [
+            "Fluent in English and Hebrew"
+        ]
+    }
+}
