@@ -1,7 +1,22 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import { useState, useCallback } from 'react';
 
 export default function CauldronPage() {
+  const [confetti, setConfetti] = useState([]);
+
+  const triggerConfetti = useCallback(() => {
+    const particles = Array.from({ length: 12 }, (_, i) => ({
+      id: Date.now() + i,
+      emoji: ['🥖', '🍞', '🥐', '🥯', '✨'][Math.floor(Math.random() * 5)],
+      x: (Math.random() - 0.5) * 120,
+      y: (Math.random() - 0.5) * 120 - 30,
+      rotation: Math.random() * 360,
+    }));
+    setConfetti(particles);
+    setTimeout(() => setConfetti([]), 800);
+  }, []);
+
   return (
     <>
       <Head>
@@ -32,14 +47,32 @@ export default function CauldronPage() {
           next favorite dish.
         </p>
 
-        <a
-          href="https://apps.apple.com/us/app/cauldron-magical-recipes/id6754004943"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="download-link"
-        >
-          Download
-        </a>
+        <div className="download-row">
+          <a
+            href="https://apps.apple.com/us/app/cauldron-magical-recipes/id6754004943"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="download-link"
+          >
+            Download
+          </a>
+          <span className="easter-egg-wrapper">
+            <Link href="/challah" className="easter-egg" onMouseEnter={triggerConfetti}>🍞</Link>
+            {confetti.map((p) => (
+              <span
+                key={p.id}
+                className="confetti-particle"
+                style={{
+                  '--x': `${p.x}px`,
+                  '--y': `${p.y}px`,
+                  '--r': `${p.rotation}deg`,
+                }}
+              >
+                {p.emoji}
+              </span>
+            ))}
+          </span>
+        </div>
 
         <div className="screenshots">
           <img src="/assets/cauldron/cook_tab.PNG" alt="Cook Tab" />
