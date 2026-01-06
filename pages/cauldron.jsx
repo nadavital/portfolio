@@ -33,12 +33,12 @@ export default function CauldronPage() {
         </p>
 
         <a
-          href="https://testflight.apple.com/join/Zk5WuCcE"
+          href="https://apps.apple.com/us/app/cauldron-magical-recipes/id6754004943"
           target="_blank"
           rel="noopener noreferrer"
-          className="testflight-link"
+          className="download-link"
         >
-          TestFlight
+          Download
         </a>
 
         <div className="screenshots">

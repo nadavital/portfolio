@@ -6,7 +6,7 @@ export default function Home() {
     <>
       <Head>
         <title>Nadav Avital</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
       </Head>
 
       <main className="minimal-page">
