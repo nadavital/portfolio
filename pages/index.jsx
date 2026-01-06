@@ -6,18 +6,17 @@ export default function Home() {
     <>
       <Head>
         <title>Nadav Avital</title>
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         {/* Prefetch app page images */}
-        <link rel="prefetch" href="/assets/playcount/playcounticon.png" as="image" />
+        <link rel="prefetch" href="/assets/playcount/playcounticon.jpg" as="image" />
         <link rel="prefetch" href="/assets/playcount/playCountTopSongs.jpeg" as="image" />
         <link rel="prefetch" href="/assets/playcount/playCountTopAlbums.jpeg" as="image" />
         <link rel="prefetch" href="/assets/playcount/playCountArtist.jpeg" as="image" />
         <link rel="prefetch" href="/assets/playcount/playCountAlbum.jpeg" as="image" />
-        <link rel="prefetch" href="/assets/cauldron/cauldronicon.png" as="image" />
-        <link rel="prefetch" href="/assets/cauldron/cook_tab.PNG" as="image" />
-        <link rel="prefetch" href="/assets/cauldron/recipe_view.PNG" as="image" />
-        <link rel="prefetch" href="/assets/cauldron/generate_recipe.PNG" as="image" />
-        <link rel="prefetch" href="/assets/cauldron/explore_tab.PNG" as="image" />
+        <link rel="prefetch" href="/assets/cauldron/cauldronicon.jpg" as="image" />
+        <link rel="prefetch" href="/assets/cauldron/cook_tab.jpg" as="image" />
+        <link rel="prefetch" href="/assets/cauldron/recipe_view.jpg" as="image" />
+        <link rel="prefetch" href="/assets/cauldron/generate_recipe.jpg" as="image" />
+        <link rel="prefetch" href="/assets/cauldron/explore_tab.jpg" as="image" />
       </Head>
 
       <main className="minimal-page">
