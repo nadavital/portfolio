@@ -32,7 +32,7 @@ export default function CauldronPage() {
 
         <header className="app-header">
           <Image
-            src="/assets/cauldron/cauldronicon.png"
+            src="/assets/cauldron/cauldronicon.jpg"
             alt=""
             width={80}
             height={80}
@@ -79,10 +79,10 @@ export default function CauldronPage() {
         </div>
 
         <div className="screenshots">
-          <Image src="/assets/cauldron/cook_tab.PNG" alt="Cook Tab" width={300} height={650} />
-          <Image src="/assets/cauldron/recipe_view.PNG" alt="Recipe View" width={300} height={650} />
-          <Image src="/assets/cauldron/generate_recipe.PNG" alt="Generate Recipe" width={300} height={650} />
-          <Image src="/assets/cauldron/explore_tab.PNG" alt="Explore Tab" width={300} height={650} />
+          <Image src="/assets/cauldron/cook_tab.jpg" alt="Cook Tab" width={1320} height={2868} sizes="(max-width: 600px) 50vw, 25vw" style={{ width: '100%', height: 'auto' }} />
+          <Image src="/assets/cauldron/recipe_view.jpg" alt="Recipe View" width={1320} height={2868} sizes="(max-width: 600px) 50vw, 25vw" style={{ width: '100%', height: 'auto' }} />
+          <Image src="/assets/cauldron/generate_recipe.jpg" alt="Generate Recipe" width={1320} height={2868} sizes="(max-width: 600px) 50vw, 25vw" style={{ width: '100%', height: 'auto' }} />
+          <Image src="/assets/cauldron/explore_tab.jpg" alt="Explore Tab" width={1320} height={2868} sizes="(max-width: 600px) 50vw, 25vw" style={{ width: '100%', height: 'auto' }} />
         </div>
 
         <div className="app-links">

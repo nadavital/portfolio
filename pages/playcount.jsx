@@ -17,7 +17,7 @@ export default function PlayCountPage() {
 
         <header className="app-header">
           <Image
-            src="/assets/playcount/playcounticon.png"
+            src="/assets/playcount/playcounticon.jpg"
             alt=""
             width={80}
             height={80}
@@ -45,10 +45,10 @@ export default function PlayCountPage() {
         </a>
 
         <div className="screenshots">
-          <Image src="/assets/playcount/playCountTopSongs.jpeg" alt="Top Songs" width={300} height={650} />
-          <Image src="/assets/playcount/playCountTopAlbums.jpeg" alt="Top Albums" width={300} height={650} />
-          <Image src="/assets/playcount/playCountArtist.jpeg" alt="Artist Stats" width={300} height={650} />
-          <Image src="/assets/playcount/playCountAlbum.jpeg" alt="Album Details" width={300} height={650} />
+          <Image src="/assets/playcount/playCountTopSongs.jpeg" alt="Top Songs" width={1290} height={2796} sizes="(max-width: 600px) 50vw, 25vw" style={{ width: '100%', height: 'auto' }} />
+          <Image src="/assets/playcount/playCountTopAlbums.jpeg" alt="Top Albums" width={1290} height={2796} sizes="(max-width: 600px) 50vw, 25vw" style={{ width: '100%', height: 'auto' }} />
+          <Image src="/assets/playcount/playCountArtist.jpeg" alt="Artist Stats" width={1290} height={2796} sizes="(max-width: 600px) 50vw, 25vw" style={{ width: '100%', height: 'auto' }} />
+          <Image src="/assets/playcount/playCountAlbum.jpeg" alt="Album Details" width={1290} height={2796} sizes="(max-width: 600px) 50vw, 25vw" style={{ width: '100%', height: 'auto' }} />
         </div>
 
         <div className="app-links">
