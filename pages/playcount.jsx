@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function PlayCountPage() {
   return (
@@ -15,10 +16,13 @@ export default function PlayCountPage() {
         </Link>
 
         <header className="app-header">
-          <img
+          <Image
             src="/assets/playcount/playcounticon.png"
             alt=""
+            width={80}
+            height={80}
             className="app-icon-large"
+            priority
           />
           <div>
             <h1>PlayCount</h1>
@@ -41,10 +45,10 @@ export default function PlayCountPage() {
         </a>
 
         <div className="screenshots">
-          <img src="/assets/playcount/playCountTopSongs.jpeg" alt="Top Songs" />
-          <img src="/assets/playcount/playCountTopAlbums.jpeg" alt="Top Albums" />
-          <img src="/assets/playcount/playCountArtist.jpeg" alt="Artist Stats" />
-          <img src="/assets/playcount/playCountAlbum.jpeg" alt="Album Details" />
+          <Image src="/assets/playcount/playCountTopSongs.jpeg" alt="Top Songs" width={300} height={650} />
+          <Image src="/assets/playcount/playCountTopAlbums.jpeg" alt="Top Albums" width={300} height={650} />
+          <Image src="/assets/playcount/playCountArtist.jpeg" alt="Artist Stats" width={300} height={650} />
+          <Image src="/assets/playcount/playCountAlbum.jpeg" alt="Album Details" width={300} height={650} />
         </div>
 
         <div className="app-links">
