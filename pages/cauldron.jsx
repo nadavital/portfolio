@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState, useCallback } from 'react';
 
 export default function CauldronPage() {
@@ -30,10 +31,13 @@ export default function CauldronPage() {
         </Link>
 
         <header className="app-header">
-          <img
+          <Image
             src="/assets/cauldron/cauldronicon.png"
             alt=""
+            width={80}
+            height={80}
             className="app-icon-large"
+            priority
           />
           <div>
             <h1>Cauldron</h1>
@@ -75,10 +79,10 @@ export default function CauldronPage() {
         </div>
 
         <div className="screenshots">
-          <img src="/assets/cauldron/cook_tab.PNG" alt="Cook Tab" />
-          <img src="/assets/cauldron/recipe_view.PNG" alt="Recipe View" />
-          <img src="/assets/cauldron/generate_recipe.PNG" alt="Generate Recipe" />
-          <img src="/assets/cauldron/explore_tab.PNG" alt="Explore Tab" />
+          <Image src="/assets/cauldron/cook_tab.PNG" alt="Cook Tab" width={300} height={650} />
+          <Image src="/assets/cauldron/recipe_view.PNG" alt="Recipe View" width={300} height={650} />
+          <Image src="/assets/cauldron/generate_recipe.PNG" alt="Generate Recipe" width={300} height={650} />
+          <Image src="/assets/cauldron/explore_tab.PNG" alt="Explore Tab" width={300} height={650} />
         </div>
 
         <div className="app-links">
